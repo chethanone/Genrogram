@@ -96,7 +96,7 @@ export default function SpectrogramLab() {
               className="mt-12 grid min-w-0 items-stretch gap-6 lg:grid-cols-2"
             >
               {/* Current track */}
-              <div className="flex h-[340px] min-w-0 flex-col rounded-3xl border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(22,22,22,0.05)]">
+              <div className="flex h-[340px] w-full min-w-0 flex-col rounded-3xl border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(22,22,22,0.05)]">
                 <div className="font-mono text-xs uppercase tracking-[0.2em] text-[#77716E]">
                   Current track
                 </div>
@@ -111,7 +111,7 @@ export default function SpectrogramLab() {
 
                   {audioUrl && (
                     <audio
-                      className="mt-5 w-full"
+                      className="mt-5 block w-full max-w-full"
                       controls
                       src={audioUrl}
                     />
@@ -137,7 +137,7 @@ export default function SpectrogramLab() {
               </div>
 
               {/* Model configuration */}
-              <div className="flex h-[500px] min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
+              <div className="flex h-[500px] w-full min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/50">
                   <SlidersHorizontal size={14} />
                   Model input configuration
