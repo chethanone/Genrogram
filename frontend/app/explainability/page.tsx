@@ -145,7 +145,7 @@ export default function ExplainabilityPage() {
 
                   {audioUrl && (
                     <audio
-                      className="mt-5 w-full"
+                      className="mt-5 block w-full max-w-full"
                       controls
                       src={audioUrl}
                     />
@@ -162,12 +162,12 @@ export default function ExplainabilityPage() {
               </div>
 
               {/* Grad-CAM process */}
-              <div className="flex h-[500px] min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
+              <div className="flex min-h-[620px] min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white lg:h-[500px] lg:min-h-0">
                 <div className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
                   How Grad-CAM works
                 </div>
 
-                <div className="mt-5 grid flex-1 grid-cols-2 gap-3">
+                <div className="mt-5 grid grid-cols-2 gap-3 lg:flex-1">
                   {steps.map(([number, title, description]) => (
                     <div
                       key={number}
