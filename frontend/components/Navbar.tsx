@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Music2, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { label: "Classify", href: "/" },
@@ -17,6 +17,25 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
+  const [showSunflowers, setShowSunflowers] = useState(false);
+
+  useEffect(() => {
+    if (!showSunflowers) return;
+    const timer = window.setTimeout(() => setShowSunflowers(false), 1500);
+    return () => window.clearTimeout(timer);
+  }, [showSunflowers]);
+
+  const handleLogoClick = () => {
+    setLogoClicks((count) => {
+      const next = count + 1;
+      if (next >= 5) {
+        setShowSunflowers(true);
+        return 0;
+      }
+      return next;
+    });
+  };
 
   return (
     <header className="border-b border-black/10 bg-[#F4F1EE]">
@@ -30,8 +49,17 @@ export default function Navbar() {
             <Music2 size={19} />
           </div>
 
-          <div className="text-xl font-bold tracking-tight">
-            GENGROGRAM
+          <div className="relative">
+            <button type="button" onClick={handleLogoClick} className="text-xl font-bold tracking-tight" aria-label="GENGROGRAM">
+              GENGROGRAM
+            </button>
+            {showSunflowers && (
+              <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 h-10 w-32 -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
+                <span className="sunflower-pop absolute left-0 top-2"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+                <span className="sunflower-pop sunflower-pop-delay absolute left-1/2 top-0"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+                <span className="sunflower-pop absolute right-0 top-2"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+              </div>
+            )}
           </div>
         </Link>
 
