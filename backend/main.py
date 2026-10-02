@@ -50,12 +50,12 @@ def validate_filename(filename: str | None):
         raise HTTPException(status_code=400, detail="Unsupported audio format. Use WAV, MP3, FLAC, OGG, or M4A.")
 
 
-@app.get("/health", response_model=HealthResponse)
+@app.get("/api/health", response_model=HealthResponse)
 def health():
     return HealthResponse(status="ok", model_loaded=model_service.model is not None, classes=model_service.class_names)
 
 
-@app.get("/model/info", response_model=ModelInfoResponse)
+@app.get("/api/model/info", response_model=ModelInfoResponse)
 def model_info():
     processor = model_service.audio_processor
     return ModelInfoResponse(
@@ -70,7 +70,7 @@ def model_info():
     )
 
 
-@app.post("/predict", response_model=PredictionResponse)
+@app.post("/api/predict", response_model=PredictionResponse)
 async def predict(file: UploadFile = File(...)):
     validate_filename(file.filename)
     try:
