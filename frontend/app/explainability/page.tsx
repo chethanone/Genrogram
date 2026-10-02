@@ -61,7 +61,7 @@ export default function ExplainabilityPage() {
   const confidence = result?.confidence ?? null;
 
   return (
-    <main className="min-h-screen bg-[#F4F1EE] text-[#161616]">
+    <main className="min-h-screen overflow-x-hidden bg-[#F4F1EE] text-[#161616]">
       <Navbar />
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-14 lg:px-10 lg:pt-20">
@@ -162,7 +162,7 @@ export default function ExplainabilityPage() {
               </div>
 
               {/* Grad-CAM process */}
-              <div className="flex h-[430px] min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
+              <div className="flex h-[500px] min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
                 <div className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
                   How Grad-CAM works
                 </div>
