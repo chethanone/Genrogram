@@ -139,7 +139,7 @@ export default function PerformancePage() {
   }, [isSmallScreen]);
 
   return (
-    <main className="min-h-screen bg-[#F4F1EE] text-[#161616]">
+    <main className="min-h-screen overflow-x-hidden bg-[#F4F1EE] text-[#161616]">
       <Navbar />
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-14 lg:px-10 lg:pt-20">
@@ -248,8 +248,8 @@ export default function PerformancePage() {
               Two evaluation levels
             </div>
 
-            <div className="mt-7 overflow-x-auto rounded-2xl border border-black/5">
-              <div className="grid min-w-[420px] grid-cols-3 bg-[#161616] px-5 py-4 font-mono text-[10px] uppercase tracking-wider text-white/55">
+            <div className="mt-7 overflow-hidden rounded-2xl border border-black/5">
+              <div className="grid grid-cols-[1.35fr_0.825fr_0.825fr] bg-[#161616] px-4 py-4 sm:px-5 font-mono text-[10px] uppercase tracking-wider text-white/55">
                 <span>Metric</span>
                 <span>Segment</span>
                 <span>Track</span>
@@ -263,7 +263,7 @@ export default function PerformancePage() {
               ].map(([metric, segment, track]) => (
                 <div
                   key={metric}
-                  className="grid min-w-[420px] grid-cols-3 border-t border-black/5 px-5 py-4 text-sm"
+                  className="grid grid-cols-[1.35fr_0.825fr_0.825fr] border-t border-black/5 px-4 py-4 sm:px-5 text-sm"
                 >
                   <span className="font-medium">{metric}</span>
 
@@ -304,12 +304,12 @@ export default function PerformancePage() {
               {genres.map((genre, index) => (
                 <div
                   key={genre}
-                  className="flex items-center gap-2 rounded-xl bg-[#F4F1EE] px-3 py-2.5 text-xs"
+                  className="flex min-w-0 items-center gap-2 rounded-xl bg-[#F4F1EE] px-3 py-2.5 text-xs"
                 >
                   <span className="font-mono text-[9px] text-[#C96F70]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span>{genre}</span>
+                  <span className="min-w-0 truncate">{genre}</span>
                 </div>
               ))}
             </div>
