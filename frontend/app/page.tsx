@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "../components/Navbar";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAudioAnalysis } from "./context/AudioAnalysisContext";
 import Link from "next/link";
 import {
@@ -31,6 +31,16 @@ export default function Home() {
 
   const { file, audioUrl, result, spectrogramUrl, processing: isClassifying, error, selectFile, processTrack, clearTrack } = useAudioAnalysis();
   const [isDragging, setIsDragging] = useState(false);
+  const [spectrogramExpanded, setSpectrogramExpanded] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsSmallScreen(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
 
   const handleFile = (selectedFile: File) => {
     selectFile(selectedFile);
@@ -358,12 +368,21 @@ export default function Home() {
                 </div>
 
                 <div className="overflow-hidden rounded-2xl bg-[#171717] p-4">
-                  <img
-                    src={spectrogramUrl}
-                    alt="Mel spectrogram of the uploaded track"
-                    className="mx-auto block max-h-[300px] w-full object-contain"
-                  />
+                  <button type="button" onClick={() => isSmallScreen && setSpectrogramExpanded(true)} className="block w-full" aria-label={isSmallScreen ? "Expand Mel spectrogram" : undefined}>
+                    <img
+                      src={spectrogramUrl}
+                      alt="Mel spectrogram of the uploaded track"
+                      className="mx-auto block max-h-[300px] w-full object-contain"
+                    />
+                  </button>
                 </div>
+
+                {isSmallScreen && spectrogramExpanded && (
+                  <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#161616]/95 p-3" role="dialog" aria-modal="true" aria-label="Expanded Mel spectrogram" onClick={() => setSpectrogramExpanded(false)}>
+                    <button type="button" className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl font-medium text-[#161616] shadow-lg" onClick={() => setSpectrogramExpanded(false)} aria-label="Close expanded spectrogram">×</button>
+                    <img src={spectrogramUrl} alt="Expanded Mel spectrogram of the uploaded track" className="max-h-[94vh] max-w-[96vw] object-contain" onClick={(event) => event.stopPropagation()} />
+                  </div>
+                )}
               </div>
             )}
           </motion.section>
