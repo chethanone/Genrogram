@@ -9,6 +9,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useAudioAnalysis } from "../context/AudioAnalysisContext";
 
 const steps = [
@@ -35,6 +36,16 @@ const steps = [
 ];
 
 export default function ExplainabilityPage() {
+  const [imageExpanded, setImageExpanded] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsSmallScreen(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
   const {
     file,
     audioUrl,
@@ -104,10 +115,10 @@ export default function ExplainabilityPage() {
             <motion.section
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-12 grid items-stretch gap-6 lg:grid-cols-2"
+              className="mt-12 grid min-w-0 items-stretch gap-6 lg:grid-cols-2"
             >
               {/* Current track */}
-              <div className="flex h-full flex-col rounded-3xl border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(22,22,22,0.05)]">
+              <div className="flex h-[320px] min-w-0 flex-col rounded-3xl border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(22,22,22,0.05)]">
                 <div className="font-mono text-xs uppercase tracking-[0.2em] text-[#77716E]">
                   Current track
                 </div>
@@ -151,7 +162,7 @@ export default function ExplainabilityPage() {
               </div>
 
               {/* Grad-CAM process */}
-              <div className="flex h-full flex-col rounded-3xl bg-[#161616] p-6 text-white">
+              <div className="flex h-[430px] min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
                 <div className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
                   How Grad-CAM works
                 </div>
@@ -249,12 +260,21 @@ export default function ExplainabilityPage() {
                 </div>
 
                 <div className="mt-7 overflow-hidden rounded-2xl bg-[#171717] p-4">
-                  <img
-                    src={gradcamUrl}
-                    alt="Grad-CAM explanation over Mel-spectrogram"
-                    className="mx-auto block w-full object-contain"
-                  />
+                  <button type="button" onClick={() => isSmallScreen && setImageExpanded(true)} className="block w-full" aria-label={isSmallScreen ? "Expand Grad-CAM spectrogram" : undefined}>
+                    <img
+                      src={gradcamUrl}
+                      alt="Grad-CAM explanation over Mel-spectrogram"
+                      className="mx-auto block w-full object-contain"
+                    />
+                  </button>
                 </div>
+
+                {isSmallScreen && imageExpanded && (
+                  <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#161616]/95 p-3" role="dialog" aria-modal="true" aria-label="Expanded Grad-CAM spectrogram" onClick={() => setImageExpanded(false)}>
+                    <button type="button" className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl font-medium text-[#161616] shadow-lg" onClick={() => setImageExpanded(false)} aria-label="Close expanded Grad-CAM">×</button>
+                    <img src={gradcamUrl} alt="Expanded Grad-CAM explanation over Mel-spectrogram" className="max-h-[94vh] max-w-[96vw] object-contain" onClick={(event) => event.stopPropagation()} />
+                  </div>
+                )}
 
                 <div className="mt-5 flex flex-col gap-3 rounded-2xl bg-[#F4F1EE] p-5 sm:flex-row sm:items-start">
                   <Info
