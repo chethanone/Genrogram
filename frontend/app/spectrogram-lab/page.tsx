@@ -137,7 +137,7 @@ export default function SpectrogramLab() {
               </div>
 
               {/* Model configuration */}
-              <div className="flex h-[560px] w-full min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
+              <div className="flex min-h-[640px] w-full min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white lg:h-[560px] lg:min-h-0">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/50">
                   <SlidersHorizontal size={14} />
                   Model input configuration
