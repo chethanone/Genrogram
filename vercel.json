@@ -8,8 +8,7 @@
     "backend": {
       "root": ".",
       "framework": "fastapi",
-      "entrypoint": "backend.main:app",
-      "includeFiles": "{ml/**,configs/**,models/production/**,models/evaluation_results.json,results/confusion_matrix.png}"
+      "entrypoint": "backend.main:app"
     }
   },
   "rewrites": [
