@@ -9,6 +9,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useAudioAnalysis } from "../context/AudioAnalysisContext";
 
 const parameters = [
@@ -20,6 +21,16 @@ const parameters = [
 ];
 
 export default function SpectrogramLab() {
+  const [imageExpanded, setImageExpanded] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsSmallScreen(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
   const {
     file,
     audioUrl,
@@ -82,10 +93,10 @@ export default function SpectrogramLab() {
             <motion.section
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-12 grid items-stretch gap-6 lg:grid-cols-2"
+              className="mt-12 grid min-w-0 items-stretch gap-6 lg:grid-cols-2"
             >
               {/* Current track */}
-              <div className="flex h-full flex-col rounded-3xl border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(22,22,22,0.05)]">
+              <div className="flex h-[340px] min-w-0 flex-col rounded-3xl border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(22,22,22,0.05)]">
                 <div className="font-mono text-xs uppercase tracking-[0.2em] text-[#77716E]">
                   Current track
                 </div>
@@ -126,7 +137,7 @@ export default function SpectrogramLab() {
               </div>
 
               {/* Model configuration */}
-              <div className="flex h-full flex-col rounded-3xl bg-[#161616] p-6 text-white">
+              <div className="flex h-[430px] min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/50">
                   <SlidersHorizontal size={14} />
                   Model input configuration
