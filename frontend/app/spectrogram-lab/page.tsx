@@ -137,7 +137,7 @@ export default function SpectrogramLab() {
               </div>
 
               {/* Model configuration */}
-              <div className="flex h-[500px] w-full min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
+              <div className="flex h-[560px] w-full min-w-0 flex-col rounded-3xl bg-[#161616] p-6 text-white">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/50">
                   <SlidersHorizontal size={14} />
                   Model input configuration
@@ -164,12 +164,12 @@ export default function SpectrogramLab() {
                   ))}
                 </div>
 
-                <div className="mt-3 rounded-2xl border border-[#C96F70]/30 bg-[#C96F70]/10 p-4">
+                <div className="mt-3 shrink-0 rounded-2xl border border-[#C96F70]/30 bg-[#C96F70]/10 p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#E5A0A1]">
                     Processing pipeline
                   </div>
 
-                  <div className="mt-2 text-sm leading-6 text-white/65">
+                  <div className="mt-2 break-words text-sm leading-6 text-white/65">
                     Audio{" "}
                     <span className="text-white/30">|</span> onset detection{" "}
                     <span className="text-white/30">|</span> 3-second view{" "}
