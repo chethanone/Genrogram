@@ -1,44 +1,367 @@
 # GENROGRAM
 
-> **Academic Title:** Develop a Music Genre Classification System Using Spectrogram and CNN  
-> **Architecture:** Audio → Resampling (22.05 kHz) → Mel Spectrogram → PyTorch Custom CNN → 10-Genre Softmax
+> **Academic Project:** Develop a Music Genre Classification System Using Spectrogram and CNN
+
+GENROGRAM is a full-stack music genre classification application that converts uploaded audio into log-Mel spectrograms and classifies the track with a PyTorch Custom Convolutional Neural Network (CustomCNN).
+
+The current production system supports **20 music genres**, provides track-level predictions and confidence scores, generates spectrogram visualizations, and provides Grad-CAM explainability for the model's prediction.
 
 ---
 
-## 1. Project Overview
+## Overview
 
-GENROGRAM is a full-stack, reproducible music genre classification system powered by deep learning and spectral signal processing. It extracts Mel-spectrograms from audio signals and classifies them using a multi-layer Convolutional Neural Network (CNN).
+GENROGRAM combines digital audio signal processing, supervised deep learning, and an interactive web interface.
 
-### Key Features
-- **Audio Preprocessing:** Resampling (22,050 Hz), mono conversion, dynamic range normalization, track-level segmentation, and log-Mel spectrogram generation (128 mel bins).
-- **Custom CNN Model:** PyTorch implementation with batch normalization, global average pooling, dropout, and Softmax output.
-- **Explainability:** Grad-CAM activation mapping to visualize model focus regions on Mel-spectrograms.
-- **Interactive UI:** Next.js application featuring Spectrogram Lab, real-time audio player, waveform renderer, model diagnostics, and performance metrics.
-- **Authentication & Persistence:** Firebase Auth (Email/Password, Google OAuth) and Firestore database for classification history.
+### Processing pipeline
+
+```text
+Audio Upload
+    ↓
+Audio Validation
+    ↓
+Mono / 22.05 kHz Processing
+    ↓
+Onset Detection + 3-Second Segmentation
+    ↓
+128-Band Log-Mel Spectrogram
+    ↓
+CustomCNN
+    ↓
+20-Class Probability Distribution
+    ↓
+Predicted Genre + Confidence
+```
+
+For a track containing multiple 3-second segments, the model predicts each segment and the probability vectors are averaged to produce the track-level prediction.
 
 ---
 
-## 2. Dataset & Split Policy
+## Current Production Model
 
-- **Primary Dataset:** GTZAN Genre Collection (1,000 30-second WAV tracks across 10 genres).
-- **Split Strategy:** Track-level deterministic split (70% Train, 15% Validation, 15% Test) with `seed=42`. Segment-level splitting is strictly prohibited to avoid data leakage.
+**Architecture:** CustomCNN  
+**Parameters:** 393,940  
+**Classes:** 20  
+**Model version:** `20-class-production-v1`
+
+### Supported genres
+
+- Blues
+- Classical
+- Country
+- Disco
+- Hip-Hop
+- Jazz
+- Metal
+- Pop
+- Reggae
+- Rock
+- Amapiano
+- Hyperpop
+- K-Pop
+- Phonk
+- Techno
+- Bollywood
+- Desi Hip-Hop
+- Haryanvi
+- I-Pop
+- Punjabi Pop
+
+### Audio and spectrogram configuration
+
+| Setting | Production value |
+|---|---:|
+| Sample rate | 22,050 Hz |
+| Segment duration | 3 seconds |
+| Mel bands | 128 |
+| FFT size | 2,048 |
+| Hop length | 512 |
+| Spectrogram | Log-Mel |
+| dB reference | Maximum |
+| Normalization | Per-segment min-max |
+
+Training-time augmentation uses frequency masking, time masking, and controlled Gaussian noise. No augmentation is applied during production inference.
 
 ---
 
-## 3. Technology Stack
+## Evaluation
 
-- **ML Pipeline:** PyTorch, Librosa, NumPy, Scikit-Learn
-- **Backend:** FastAPI, Uvicorn, Pydantic
-- **Frontend:** Next.js (TypeScript, Tailwind CSS, Framer Motion, Recharts, Lucide React)
-- **Database & Auth:** Firebase Auth, Cloud Firestore
+The production checkpoint was evaluated on an untouched held-out test set of **323 tracks across 20 genres**.
+
+### Track-level results
+
+| Metric | Result |
+|---|---:|
+| Accuracy | **75.54%** |
+| Macro Precision | **78.72%** |
+| Macro Recall | **75.68%** |
+| Macro F1 | **75.58%** |
+
+### Segment-level results
+
+| Metric | Result |
+|---|---:|
+| Accuracy | **65.56%** |
+| Macro Precision | **68.30%** |
+| Macro Recall | **65.47%** |
+| Macro F1 | **65.55%** |
+
+Track-level evaluation is the primary production metric because the application ultimately classifies an uploaded song rather than an isolated spectrogram segment.
 
 ---
 
-## 4. Documentation Index
+## Dataset and Training
 
-- [Architecture Guide](docs/architecture.md)
-- [Dataset Specifications](docs/dataset.md)
-- [Training & Safety Protocols](docs/training.md)
-- [Evaluation & Metrics](docs/evaluation.md)
-- [Deployment Guide](docs/deployment.md)
-- [Authentication & Security](docs/authentication.md)
+The current 20-class training corpus contains **2,143 tracks**:
+
+- Train: 1,499 tracks
+- Validation: 321 tracks
+- Test: 323 tracks
+
+The training corpus combines the project's original GTZAN material with additional genre data used to expand the system to 20 classes.
+
+The data is split at the **track level**, so segments from the same source track are kept within the same split. This prevents segments from one song appearing across training, validation, and test sets.
+
+Raw datasets and training caches are intentionally not part of the deployment runtime.
+
+---
+
+## Application Features
+
+### Classify
+
+Upload an audio file and receive:
+
+- Predicted genre
+- Confidence score
+- Top predictions
+- Audio playback
+- Track analysis
+
+Supported upload formats:
+
+- WAV
+- MP3
+- FLAC
+- OGG
+- M4A
+
+### Spectrogram Lab
+
+View the generated log-Mel spectrogram and inspect the production preprocessing configuration used by the system.
+
+### Explainability
+
+Generate a Grad-CAM visualization showing the regions of the spectrogram that contributed to the selected prediction.
+
+### Model
+
+View the production model architecture, preprocessing configuration, training configuration, and architecture comparison information.
+
+### Performance
+
+View the held-out evaluation metrics for the production model.
+
+### History
+
+Classification history is stored locally in the browser using `localStorage`. No Firebase authentication or Firestore database is used.
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- Next.js 14
+- React 18
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Recharts
+- Lucide React
+
+### Backend
+
+- FastAPI
+- Uvicorn
+- Pydantic
+- Python
+
+### Machine Learning
+
+- PyTorch
+- Librosa
+- NumPy
+- SoundFile
+- Matplotlib
+
+The production backend runs the trained CustomCNN checkpoint directly for inference.
+
+---
+
+## Project Structure
+
+```text
+Genrogram/
+├── api/
+│   └── index.py                  # Vercel FastAPI entrypoint
+├── backend/
+│   ├── main.py                   # FastAPI application
+│   ├── model_service.py          # Production model inference
+│   ├── audio_service.py          # Audio and spectrogram processing
+│   ├── explainability_service.py # Grad-CAM generation
+│   └── schemas.py                # API response schemas
+├── configs/
+├── frontend/
+│   └── app/                      # Next.js application
+├── ml/
+│   └── custom_cnn.py             # CustomCNN architecture
+├── models/
+│   └── production/
+│       ├── gengrogram_custom_cnn_20class_production.pt
+│       └── production_config.json
+├── results/
+├── scripts/
+├── tests/
+├── docs/
+├── requirements.txt
+└── vercel.json
+```
+
+Training datasets, caches, virtual environments, build output, and other development-only artifacts are excluded from deployment where appropriate.
+
+---
+
+## Local Development
+
+### Frontend
+
+From the `frontend` directory:
+
+```bash
+npm install
+npm run dev
+```
+
+The Next.js development server normally runs at:
+
+```text
+http://localhost:3000
+```
+
+Set the backend URL through:
+
+```text
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+```
+
+### Backend
+
+From the project root, install the Python dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Then start FastAPI:
+
+```bash
+uvicorn backend.main:app --reload --port 8000
+```
+
+The backend normally runs at:
+
+```text
+http://127.0.0.1:8000
+```
+
+The frontend communicates with the backend through `NEXT_PUBLIC_API_URL`.
+
+---
+
+## API
+
+The production backend exposes:
+
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/health` | GET | Backend and model health |
+| `/model/info` | GET | Production model information |
+| `/predict` | POST | Predict the genre of an uploaded track |
+| `/spectrogram` | POST | Generate a spectrogram image |
+| `/explainability` | POST | Generate Grad-CAM visualization |
+| `/evaluation/summary` | GET | Evaluation summary |
+| `/evaluation/confusion-matrix` | GET | Evaluation confusion matrix |
+
+---
+
+## Deployment
+
+GENROGRAM is structured for deployment as two Vercel projects:
+
+1. **Frontend** — Next.js project using the `frontend/` directory.
+2. **Backend** — FastAPI/Python project using the repository root and `api/index.py` as the Vercel entrypoint.
+
+### Frontend environment variable
+
+```text
+NEXT_PUBLIC_API_URL=https://<backend-domain>
+```
+
+### Backend environment variable
+
+```text
+FRONTEND_ORIGIN=https://<frontend-domain>
+```
+
+The production model and its configuration are included through the Vercel function configuration.
+
+The current client-side upload limit is 4 MB to remain within the deployment request-size constraint.
+
+---
+
+## Production Artifact
+
+The frozen production checkpoint is:
+
+```text
+models/production/gengrogram_custom_cnn_20class_production.pt
+```
+
+Its corresponding configuration is:
+
+```text
+models/production/production_config.json
+```
+
+The production configuration records the model version, class mapping, preprocessing parameters, augmentation settings, and held-out evaluation metrics.
+
+---
+
+## Project Status
+
+GENROGRAM currently has:
+
+- A trained 20-class production CustomCNN
+- A FastAPI inference backend
+- A responsive Next.js frontend
+- Spectrogram visualization
+- Grad-CAM explainability
+- Local classification history
+- Production evaluation metrics
+- Vercel deployment configuration
+
+The project is ready for deployment and final live-system validation.
+
+---
+
+## Academic Context
+
+GENROGRAM was developed as an academic machine learning project demonstrating the use of:
+
+- Digital audio signal processing
+- Mel-spectrogram representation
+- Convolutional neural networks
+- Supervised multi-class classification
+- Track-level evaluation
+- Model explainability with Grad-CAM
+- Full-stack ML application deployment
