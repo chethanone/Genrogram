@@ -6,10 +6,16 @@ from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 
-from backend.audio_service import audio_service
-from backend.explainability_service import explainability_service
-from backend.model_service import model_service
-from backend.schemas import HealthResponse, ModelInfoResponse, PredictionItem, PredictionResponse
+try:
+    from .audio_service import audio_service
+    from .explainability_service import explainability_service
+    from .model_service import model_service
+    from .schemas import HealthResponse, ModelInfoResponse, PredictionItem, PredictionResponse
+except ImportError:
+    from audio_service import audio_service
+    from explainability_service import explainability_service
+    from model_service import model_service
+    from schemas import HealthResponse, ModelInfoResponse, PredictionItem, PredictionResponse
 
 app = FastAPI(
     title="GENGROGRAM API",
