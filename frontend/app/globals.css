@@ -55,20 +55,40 @@ select {
 
 
 @keyframes sunflower-ground-pop {
-  0% { opacity: 0; transform: translateY(34px) scale(0.2) rotate(-10deg); }
-  16% { opacity: 1; transform: translateY(-4px) scale(1.08) rotate(3deg); }
-  35% { opacity: 1; transform: translateY(0) scale(1) rotate(-2deg); }
-  72% { opacity: 1; transform: translateY(0) scale(0.98) rotate(2deg); }
-  100% { opacity: 0; transform: translateY(28px) scale(0.18) rotate(8deg); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.35) rotate(-5deg);
+  }
+  12% {
+    opacity: 0.35;
+    transform: translate3d(0, 15px, 0) scale(0.58) rotate(-2deg);
+  }
+  28% {
+    opacity: 0.8;
+    transform: translate3d(0, 5px, 0) scale(0.9) rotate(1deg);
+  }
+  42% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  72% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.45) rotate(4deg);
+  }
 }
 
 .sunflower-ground {
   position: absolute;
   display: block;
-  width: 22px;
-  height: 22px;
-  animation: sunflower-ground-pop 1.55s ease-out forwards;
+  width: clamp(18px, 2.2vw, 26px);
+  height: clamp(18px, 2.2vw, 26px);
+  animation: sunflower-ground-pop 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   transform-origin: center bottom;
+  will-change: transform, opacity;
 }
 
 .sunflower-ground .sunflower-petals {
@@ -98,10 +118,10 @@ select {
   background: #8A5A20;
 }
 
-.flower-1 { left: 7%; bottom: 9px; animation-delay: 0ms; }
-.flower-2 { left: 19%; bottom: 1px; animation-delay: 45ms; }
-.flower-3 { left: 32%; bottom: 20px; animation-delay: 90ms; }
-.flower-4 { left: 47%; bottom: 5px; animation-delay: 35ms; }
-.flower-5 { left: 62%; bottom: 23px; animation-delay: 105ms; }
-.flower-6 { left: 77%; bottom: 3px; animation-delay: 60ms; }
-.flower-7 { left: 91%; bottom: 16px; animation-delay: 120ms; }
+.flower-1 { left: 7%; bottom: clamp(8px, 2vh, 24px); animation-delay: 0ms; }
+.flower-2 { left: 19%; bottom: clamp(4px, 1vh, 14px); animation-delay: 0ms; }
+.flower-3 { left: 32%; bottom: clamp(16px, 3vh, 32px); animation-delay: 0ms; }
+.flower-4 { left: 47%; bottom: clamp(6px, 1.5vh, 18px); animation-delay: 0ms; }
+.flower-5 { left: 62%; bottom: clamp(18px, 3.5vh, 36px); animation-delay: 0ms; }
+.flower-6 { left: 77%; bottom: clamp(5px, 1.2vh, 16px); animation-delay: 0ms; }
+.flower-7 { left: 91%; bottom: clamp(12px, 2.5vh, 28px); animation-delay: 0ms; }
