@@ -143,7 +143,7 @@ export default function SpectrogramLab() {
                   Model input configuration
                 </div>
 
-                <div className="mt-5 grid flex-1 gap-3 sm:grid-cols-2">
+                <div className="mt-5 grid flex-1 grid-cols-2 gap-3">
                   {parameters.map(([label, value, description]) => (
                     <div
                       key={label}
