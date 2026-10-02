@@ -11,6 +11,7 @@ import {
   Target,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const API_URL = (process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || "/api").replace(/\/$/, "");
 
@@ -112,6 +113,31 @@ const architectureComparison = [
 ];
 
 export default function PerformancePage() {
+  const [matrixLoaded, setMatrixLoaded] = useState(false);
+  const [matrixExpanded, setMatrixExpanded] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsSmallScreen(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!isSmallScreen || !matrixExpanded) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isSmallScreen, matrixExpanded]);
+
+  useEffect(() => {
+    if (!isSmallScreen) setMatrixExpanded(false);
+  }, [isSmallScreen]);
+
   return (
     <main className="min-h-screen bg-[#F4F1EE] text-[#161616]">
       <Navbar />
@@ -315,13 +341,41 @@ export default function PerformancePage() {
             </div>
           </div>
 
-          <div className="mt-7 overflow-hidden rounded-2xl bg-[#161616] p-4 sm:p-6">
+          <div className="mt-7 overflow-hidden rounded-2xl bg-[#161616] p-3 sm:p-6">
             <img
               src={`${API_URL}/evaluation/confusion-matrix`}
               alt="GENGROGRAM 20-class track-level confusion matrix"
-              className="mx-auto block max-h-[700px] w-full object-contain"
+              className={`mx-auto block w-full object-contain transition-opacity duration-200 sm:max-h-[700px] ${matrixLoaded ? "opacity-100" : "opacity-0"}`}
+              loading="eager"
+              decoding="async"
+              onLoad={() => setMatrixLoaded(true)}
             />
           </div>
+
+          {isSmallScreen && matrixExpanded && (
+            <div
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-[#161616]/95 p-3"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Expanded confusion matrix"
+              onClick={() => setMatrixExpanded(false)}
+            >
+              <button
+                type="button"
+                className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl font-medium text-[#161616] shadow-lg"
+                onClick={() => setMatrixExpanded(false)}
+                aria-label="Close expanded confusion matrix"
+              >
+                ×
+              </button>
+              <img
+                src={`${API_URL}/evaluation/confusion-matrix`}
+                alt="Expanded GENGROGRAM 20-class track-level confusion matrix"
+                className="max-h-[94vh] max-w-[96vw] object-contain"
+                onClick={(event) => event.stopPropagation()}
+              />
+            </div>
+          )}
         </section>
 
         {/* Methodology */}
