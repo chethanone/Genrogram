@@ -342,6 +342,12 @@ export default function PerformancePage() {
           </div>
 
           <div className="mt-7 overflow-hidden rounded-2xl bg-[#161616] p-3 sm:p-6">
+            <button
+              type="button"
+              onClick={() => isSmallScreen && setMatrixExpanded(true)}
+              className={`group block w-full ${isSmallScreen ? "cursor-zoom-in" : "cursor-default"}`}
+              aria-label={isSmallScreen ? "Expand confusion matrix" : undefined}
+            >
             <img
               src={`${API_URL}/evaluation/confusion-matrix`}
               alt="GENGROGRAM 20-class track-level confusion matrix"
@@ -350,6 +356,7 @@ export default function PerformancePage() {
               decoding="async"
               onLoad={() => setMatrixLoaded(true)}
             />
+            </button>
           </div>
 
           {isSmallScreen && matrixExpanded && (
