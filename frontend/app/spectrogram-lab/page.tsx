@@ -223,12 +223,21 @@ export default function SpectrogramLab() {
                 </div>
 
                 <div className="mt-7 overflow-hidden rounded-2xl bg-[#171717] p-4">
-                  <img
-                    src={spectrogramUrl}
-                    alt="Mel spectrogram aligned to musical onset"
-                    className="mx-auto block w-full object-contain"
-                  />
+                  <button type="button" onClick={() => isSmallScreen && setImageExpanded(true)} className="block w-full" aria-label={isSmallScreen ? "Expand Mel spectrogram" : undefined}>
+                    <img
+                      src={spectrogramUrl}
+                      alt="Mel spectrogram aligned to musical onset"
+                      className="mx-auto block w-full object-contain"
+                    />
+                  </button>
                 </div>
+
+                {isSmallScreen && imageExpanded && (
+                  <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#161616]/95 p-3" role="dialog" aria-modal="true" aria-label="Expanded Mel spectrogram" onClick={() => setImageExpanded(false)}>
+                    <button type="button" className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl font-medium text-[#161616] shadow-lg" onClick={() => setImageExpanded(false)} aria-label="Close expanded spectrogram">×</button>
+                    <img src={spectrogramUrl} alt="Expanded Mel spectrogram aligned to musical onset" className="max-h-[94vh] max-w-[96vw] object-contain" onClick={(event) => event.stopPropagation()} />
+                  </div>
+                )}
 
                 <div className="mt-4 flex justify-between font-mono text-[10px] uppercase tracking-wider text-[#AAA4A0]">
                   <span>Low frequency</span>
