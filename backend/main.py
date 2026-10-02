@@ -90,7 +90,7 @@ async def predict(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(exc)}")
 
 
-@app.post("/spectrogram")
+@app.post("/api/spectrogram")
 async def spectrogram(file: UploadFile = File(...)):
     validate_filename(file.filename)
     try:
@@ -109,7 +109,7 @@ async def spectrogram(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=f"Spectrogram generation failed: {str(exc)}")
 
 
-@app.post("/explainability")
+@app.post("/api/explainability")
 async def explainability(file: UploadFile = File(...), target_genre: str | None = Form(default=None)):
     validate_filename(file.filename)
     try:
@@ -136,7 +136,7 @@ async def explainability(file: UploadFile = File(...), target_genre: str | None 
         raise HTTPException(status_code=500, detail=f"Grad-CAM generation failed: {str(exc)}")
 
 
-@app.get("/evaluation/summary")
+@app.get("/api/evaluation/summary")
 def evaluation_summary():
     evaluation_file = PROJECT_ROOT / "models" / "evaluation_results.json"
     if not evaluation_file.exists():
@@ -145,7 +145,7 @@ def evaluation_summary():
         return json.load(f)
 
 
-@app.get("/evaluation/confusion-matrix")
+@app.get("/api/evaluation/confusion-matrix")
 def confusion_matrix():
     image_file = PROJECT_ROOT / "results" / "confusion_matrix.png"
     if not image_file.exists():
