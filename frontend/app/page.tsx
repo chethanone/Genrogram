@@ -89,7 +89,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-10 lg:pt-24">
-        <div className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="grid min-w-0 gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -138,11 +138,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
-            className="relative"
+            className="relative min-w-0 w-full"
           >
             <div className="absolute -right-3 -top-3 h-20 w-20 rounded-full border border-[#C96F70]/30" />
 
-            <div className={`relative overflow-hidden rounded-3xl border border-black/10 bg-white p-5 shadow-[0_20px_60px_rgba(22,22,22,0.08)] transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${file ? "h-[600px]" : "h-[410px]"}`}>
+            <div className={`relative w-full min-w-0 overflow-hidden rounded-3xl border border-black/10 bg-white p-5 shadow-[0_20px_60px_rgba(22,22,22,0.08)] transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${file ? "h-[600px]" : "h-[410px]"}`}>
               <div
                 onDragOver={(event) => {
                   event.preventDefault();
@@ -151,7 +151,7 @@ export default function Home() {
                 onDragLeave={() => setIsDragging(false)}
                 onDrop={handleDrop}
                 onClick={() => inputRef.current?.click()}
-                className={`flex h-[300px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 text-center transition ${isDragging
+                className={`flex h-[300px] w-full min-w-0 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 text-center transition ${isDragging
                   ? "border-[#C96F70] bg-[#C96F70]/5"
                   : "border-black/10 hover:border-[#C96F70]/50 hover:bg-[#F4F1EE]/50"
                   }`}
@@ -182,7 +182,7 @@ export default function Home() {
               </div>
 
               {file && (
-                <div className="mt-4 h-[240px] rounded-2xl bg-[#F4F1EE] p-4">
+                <div className="mt-4 h-[240px] w-full min-w-0 overflow-hidden rounded-2xl bg-[#F4F1EE] p-4">
                   <div className="flex items-center gap-3">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#C96F70] text-white">
                       <Music2 size={18} />
@@ -209,7 +209,7 @@ export default function Home() {
 
                   {audioUrl && (
                     <audio
-                      className="mt-4 w-full"
+                      className="mt-4 block w-full max-w-full"
                       controls
                       src={audioUrl}
                     />
