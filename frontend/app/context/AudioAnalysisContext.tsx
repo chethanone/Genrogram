@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useMemo, useRef, useState } from "react";
 
-const API_URL = (process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || "http://127.0.0.1:8000/api").replace(/\/$/, "");
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || "/api").replace(/\/$/, "");
 
 const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 
