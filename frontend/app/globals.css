@@ -54,44 +54,54 @@ select {
 }
 
 
-@keyframes sunflower-pop {
-  0% { opacity: 0; transform: scale(0.15) rotate(-12deg); }
-  18% { opacity: 1; transform: scale(1.05) rotate(4deg); }
-  72% { opacity: 1; transform: scale(0.95) rotate(-2deg); }
-  100% { opacity: 0; transform: scale(0.15) rotate(10deg); }
+@keyframes sunflower-ground-pop {
+  0% { opacity: 0; transform: translateY(34px) scale(0.2) rotate(-10deg); }
+  16% { opacity: 1; transform: translateY(-4px) scale(1.08) rotate(3deg); }
+  35% { opacity: 1; transform: translateY(0) scale(1) rotate(-2deg); }
+  72% { opacity: 1; transform: translateY(0) scale(0.98) rotate(2deg); }
+  100% { opacity: 0; transform: translateY(28px) scale(0.18) rotate(8deg); }
 }
 
-.sunflower-pop {
-  position: relative;
-  display: block;
-  width: 15px;
-  height: 15px;
-  animation: sunflower-pop 1.5s ease-out forwards;
-}
-
-.sunflower-pop-delay {
-  animation-delay: 80ms;
-}
-
-.sunflower-petals {
+.sunflower-ground {
   position: absolute;
-  inset: 1px;
+  display: block;
+  width: 22px;
+  height: 22px;
+  animation: sunflower-ground-pop 1.55s ease-out forwards;
+  transform-origin: center bottom;
+}
+
+.sunflower-ground .sunflower-petals {
+  position: absolute;
+  inset: 2px;
   border-radius: 50%;
   background: #D9A441;
   box-shadow:
-    0 -5px 0 -1px #D9A441,
-    0 5px 0 -1px #D9A441,
-    5px 0 0 -1px #D9A441,
-    -5px 0 0 -1px #D9A441;
+    0 -7px 0 -1px #D9A441,
+    0 7px 0 -1px #D9A441,
+    7px 0 0 -1px #D9A441,
+    -7px 0 0 -1px #D9A441,
+    5px -5px 0 -2px #D9A441,
+    -5px -5px 0 -2px #D9A441,
+    5px 5px 0 -2px #D9A441,
+    -5px 5px 0 -2px #D9A441;
 }
 
-.sunflower-center {
+.sunflower-ground .sunflower-center {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: #8A5A20;
 }
+
+.flower-1 { left: 7%; bottom: 9px; animation-delay: 0ms; }
+.flower-2 { left: 19%; bottom: 1px; animation-delay: 45ms; }
+.flower-3 { left: 32%; bottom: 20px; animation-delay: 90ms; }
+.flower-4 { left: 47%; bottom: 5px; animation-delay: 35ms; }
+.flower-5 { left: 62%; bottom: 23px; animation-delay: 105ms; }
+.flower-6 { left: 77%; bottom: 3px; animation-delay: 60ms; }
+.flower-7 { left: 91%; bottom: 16px; animation-delay: 120ms; }
