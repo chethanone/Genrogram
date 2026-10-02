@@ -59,10 +59,14 @@ export default function Navbar() {
               GENGROGRAM
             </button>
             {showSunflowers && (
-              <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 h-10 w-32 -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
-                <span className="sunflower-pop absolute left-0 top-2"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
-                <span className="sunflower-pop sunflower-pop-delay absolute left-1/2 top-0"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
-                <span className="sunflower-pop absolute right-0 top-2"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+              <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[90] h-40" aria-hidden="true">
+                <span className="sunflower-ground flower-1"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+                <span className="sunflower-ground flower-2"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+                <span className="sunflower-ground flower-3"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+                <span className="sunflower-ground flower-4"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+                <span className="sunflower-ground flower-5"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+                <span className="sunflower-ground flower-6"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
+                <span className="sunflower-ground flower-7"><span className="sunflower-petals" /><span className="sunflower-center" /></span>
               </div>
             )}
           </div>
