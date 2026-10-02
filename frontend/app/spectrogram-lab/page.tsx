@@ -42,7 +42,7 @@ export default function SpectrogramLab() {
   } = useAudioAnalysis();
 
   return (
-    <main className="min-h-screen bg-[#F4F1EE] text-[#161616]">
+    <main className="min-h-screen overflow-x-hidden bg-[#F4F1EE] text-[#161616]">
       <Navbar />
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-14 lg:px-10 lg:pt-20">
