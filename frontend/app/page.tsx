@@ -132,7 +132,7 @@ export default function Home() {
           >
             <div className="absolute -right-3 -top-3 h-20 w-20 rounded-full border border-[#C96F70]/30" />
 
-            <div className="relative h-[600px] rounded-3xl border border-black/10 bg-white p-5 shadow-[0_20px_60px_rgba(22,22,22,0.08)]">
+            <div className={`relative overflow-hidden rounded-3xl border border-black/10 bg-white p-5 shadow-[0_20px_60px_rgba(22,22,22,0.08)] transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${file ? "h-[600px]" : "h-[410px]"}`}>
               <div
                 onDragOver={(event) => {
                   event.preventDefault();
