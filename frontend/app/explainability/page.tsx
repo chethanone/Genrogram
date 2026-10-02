@@ -167,7 +167,7 @@ export default function ExplainabilityPage() {
                   How Grad-CAM works
                 </div>
 
-                <div className="mt-5 grid flex-1 gap-3 sm:grid-cols-2">
+                <div className="mt-5 grid flex-1 grid-cols-2 gap-3">
                   {steps.map(([number, title, description]) => (
                     <div
                       key={number}
