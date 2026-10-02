@@ -52,3 +52,45 @@ select {
 ::-webkit-scrollbar-thumb:hover {
   background: #c96f70;
 }
+
+
+@keyframes sunflower-pop {
+  0% { opacity: 0; transform: scale(0.15) rotate(-12deg); }
+  18% { opacity: 1; transform: scale(1.05) rotate(4deg); }
+  72% { opacity: 1; transform: scale(0.95) rotate(-2deg); }
+  100% { opacity: 0; transform: scale(0.15) rotate(10deg); }
+}
+
+.sunflower-pop {
+  display: block;
+  width: 15px;
+  height: 15px;
+  animation: sunflower-pop 1.5s ease-out forwards;
+}
+
+.sunflower-pop-delay {
+  animation-delay: 80ms;
+}
+
+.sunflower-petals {
+  position: absolute;
+  inset: 1px;
+  border-radius: 50%;
+  background: #D9A441;
+  box-shadow:
+    0 -5px 0 -1px #D9A441,
+    0 5px 0 -1px #D9A441,
+    5px 0 0 -1px #D9A441,
+    -5px 0 0 -1px #D9A441;
+}
+
+.sunflower-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #8A5A20;
+}
