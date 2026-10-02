@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Music2, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
   { label: "Classify", href: "/" },
@@ -19,6 +19,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
   const [showSunflowers, setShowSunflowers] = useState(false);
+  const logoResetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (!showSunflowers) return;
@@ -27,12 +28,20 @@ export default function Navbar() {
   }, [showSunflowers]);
 
   const handleLogoClick = () => {
+    if (logoResetTimer.current) clearTimeout(logoResetTimer.current);
+
     setLogoClicks((count) => {
       const next = count + 1;
+
       if (next >= 5) {
         setShowSunflowers(true);
         return 0;
       }
+
+      logoResetTimer.current = setTimeout(() => {
+        setLogoClicks(0);
+      }, 700);
+
       return next;
     });
   };
@@ -40,11 +49,7 @@ export default function Navbar() {
   return (
     <header className="border-b border-black/10 bg-[#F4F1EE]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-        <Link
-          href="/"
-          onClick={() => setMobileOpen(false)}
-          className="flex items-center gap-3"
-        >
+        <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#C96F70] text-white">
             <Music2 size={19} />
           </div>
@@ -61,7 +66,7 @@ export default function Navbar() {
               </div>
             )}
           </div>
-        </Link>
+        </div>
 
         {/* Desktop navigation */}
         <nav className="hidden items-center gap-6 lg:flex">
