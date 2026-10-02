@@ -1,0 +1,23 @@
+{
+  "cuda_available": false,
+  "selected_device": "cpu",
+  "device_name": "CPU (Intel / Host)",
+  "mixed_precision": false,
+  "counts": {
+    "train_tracks": 698,
+    "val_tracks": 144,
+    "test_tracks": 157,
+    "train_segments": 6973,
+    "val_segments": 1438,
+    "test_segments": 1570,
+    "total_tracks": 999,
+    "total_segments": 9981
+  },
+  "training_params": {
+    "batch_size": 32,
+    "max_epochs": 30,
+    "batches_per_epoch": 218,
+    "expected_checkpoint_location": "models/best_model.pt",
+    "estimated_disk_usage_mb": 10.0
+  }
+}

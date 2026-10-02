@@ -1,0 +1,240 @@
+{
+  "dataset": "GENGROGRAM Expanded 20-Class Dataset",
+  "seed": 42,
+  "ratios_requested": {
+    "train": 0.7,
+    "validation": 0.15,
+    "test": 0.15
+  },
+  "total_records": 3142,
+  "split_counts": {
+    "train": 2198,
+    "validation": 471,
+    "test": 473
+  },
+  "split_percentages": {
+    "train": 0.6995544239338001,
+    "validation": 0.14990451941438573,
+    "test": 0.15054105665181414
+  },
+  "class_counts": {
+    "train": {
+      "Amapiano": 81,
+      "Blues": 140,
+      "Bollywood": 91,
+      "Classical": 140,
+      "Country": 140,
+      "Desi Hip-Hop": 78,
+      "Disco": 140,
+      "Haryanvi": 86,
+      "Hip-Hop": 140,
+      "Hyperpop": 99,
+      "I-Pop": 69,
+      "Jazz": 138,
+      "K-Pop": 91,
+      "Metal": 140,
+      "Phonk": 76,
+      "Pop": 140,
+      "Punjabi Pop": 75,
+      "Reggae": 140,
+      "Rock": 140,
+      "Techno": 54
+    },
+    "validation": {
+      "Amapiano": 17,
+      "Blues": 30,
+      "Bollywood": 19,
+      "Classical": 30,
+      "Country": 30,
+      "Desi Hip-Hop": 17,
+      "Disco": 30,
+      "Haryanvi": 18,
+      "Hip-Hop": 30,
+      "Hyperpop": 21,
+      "I-Pop": 15,
+      "Jazz": 30,
+      "K-Pop": 20,
+      "Metal": 30,
+      "Phonk": 16,
+      "Pop": 30,
+      "Punjabi Pop": 16,
+      "Reggae": 30,
+      "Rock": 30,
+      "Techno": 12
+    },
+    "test": {
+      "Amapiano": 17,
+      "Blues": 30,
+      "Bollywood": 20,
+      "Classical": 30,
+      "Country": 30,
+      "Desi Hip-Hop": 17,
+      "Disco": 30,
+      "Haryanvi": 19,
+      "Hip-Hop": 30,
+      "Hyperpop": 21,
+      "I-Pop": 15,
+      "Jazz": 30,
+      "K-Pop": 20,
+      "Metal": 30,
+      "Phonk": 16,
+      "Pop": 30,
+      "Punjabi Pop": 16,
+      "Reggae": 30,
+      "Rock": 30,
+      "Techno": 12
+    }
+  },
+  "source_counts": {
+    "train": {
+      "GTZAN": 1398,
+      "Navrasa": 800
+    },
+    "validation": {
+      "GTZAN": 300,
+      "Navrasa": 171
+    },
+    "test": {
+      "GTZAN": 300,
+      "Navrasa": 173
+    }
+  },
+  "duplicate_group_statistics": {
+    "total_sha256_groups": 2129,
+    "duplicate_group_count": 985,
+    "records_inside_duplicate_groups": 1998
+  },
+  "leakage_check": {
+    "train_validation_sha256_overlap": 0,
+    "train_test_sha256_overlap": 0,
+    "validation_test_sha256_overlap": 0,
+    "passed": true
+  },
+  "per_class_group_split": {
+    "Amapiano": {
+      "total_records": 115,
+      "train_records": 81,
+      "validation_records": 17,
+      "test_records": 17
+    },
+    "Blues": {
+      "total_records": 200,
+      "train_records": 140,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "Bollywood": {
+      "total_records": 130,
+      "train_records": 91,
+      "validation_records": 19,
+      "test_records": 20
+    },
+    "Classical": {
+      "total_records": 200,
+      "train_records": 140,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "Country": {
+      "total_records": 200,
+      "train_records": 140,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "Desi Hip-Hop": {
+      "total_records": 112,
+      "train_records": 78,
+      "validation_records": 17,
+      "test_records": 17
+    },
+    "Disco": {
+      "total_records": 200,
+      "train_records": 140,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "Haryanvi": {
+      "total_records": 123,
+      "train_records": 86,
+      "validation_records": 18,
+      "test_records": 19
+    },
+    "Hip-Hop": {
+      "total_records": 200,
+      "train_records": 140,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "Hyperpop": {
+      "total_records": 141,
+      "train_records": 99,
+      "validation_records": 21,
+      "test_records": 21
+    },
+    "I-Pop": {
+      "total_records": 99,
+      "train_records": 69,
+      "validation_records": 15,
+      "test_records": 15
+    },
+    "Jazz": {
+      "total_records": 198,
+      "train_records": 138,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "K-Pop": {
+      "total_records": 131,
+      "train_records": 91,
+      "validation_records": 20,
+      "test_records": 20
+    },
+    "Metal": {
+      "total_records": 200,
+      "train_records": 140,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "Phonk": {
+      "total_records": 108,
+      "train_records": 76,
+      "validation_records": 16,
+      "test_records": 16
+    },
+    "Pop": {
+      "total_records": 200,
+      "train_records": 140,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "Punjabi Pop": {
+      "total_records": 107,
+      "train_records": 75,
+      "validation_records": 16,
+      "test_records": 16
+    },
+    "Reggae": {
+      "total_records": 200,
+      "train_records": 140,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "Rock": {
+      "total_records": 200,
+      "train_records": 140,
+      "validation_records": 30,
+      "test_records": 30
+    },
+    "Techno": {
+      "total_records": 78,
+      "train_records": 54,
+      "validation_records": 12,
+      "test_records": 12
+    }
+  },
+  "outputs": {
+    "train": "C:\\Genrogram\\data\\manifests\\train_manifest.csv",
+    "validation": "C:\\Genrogram\\data\\manifests\\validation_manifest.csv",
+    "test": "C:\\Genrogram\\data\\manifests\\test_manifest.csv"
+  }
+}

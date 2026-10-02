@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+ENV/
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+node_modules/
+.next/
+.npm/
+.eslintcache
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+*.secret.json
+firebase-service-account.json
+.firebase/
+
+# Datasets / generated audio
+data/raw/
+data/processed/
+data/gtzan/
+data/expanded_raw/
+*.wav
+*.mp3
+*.au
+*.flac
+*.ogg
+
+# Local generated test images
+frontend/*_test.png
+audit_outputs/dataset/*_test.png
+
+# ML training artefacts (keep the production checkpoint explicitly)
+*.pth
+*.onnx
+*.safetensors
+checkpoint/
+tensorboard/
+.benchmarks/
+models/*.pt
+models/expanded_20class/*.pt
+!models/production/gengrogram_custom_cnn_20class_production.pt
+
+# Python packaging / build
+build/
+dist/
+*.egg-info/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

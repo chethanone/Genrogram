@@ -1,0 +1,76 @@
+{
+  "total_files": 1164,
+  "valid_files": 1164,
+  "invalid_files": 0,
+  "class_counts": {
+    "Amapiano::Global": 115,
+    "Bollywood::India": 132,
+    "Desi_Hip-Hop::India": 115,
+    "Haryanvi::India": 126,
+    "Hyperpop::Global": 141,
+    "I-Pop::India": 102,
+    "K-Pop::Global": 135,
+    "Phonk::Global": 109,
+    "Punjabi_Pop::India": 111,
+    "Techno::Global": 78
+  },
+  "duplicate_clusters": [
+    [
+      "Bollywood\\India\\Bollywood\\Bollywood_Hits_-_Non_Stop_Bollywood_Party_Songs_Video_Jukebox_Dance_Songs_Party_Songs_Hindi_Party_On_My_Mind.wav",
+      "Bollywood\\India\\Bollywood\\Hits_Of_Anu_Malik_-_Bollywood_Party_Mix_2024_Dance_Songs_Party_Songs_Hindi_New_Year_Party_Songs_Video_Jukebox.wav"
+    ],
+    [
+      "Bollywood\\India\\Bollywood\\Freakin_Music_Entertainment_-_The_Bads_of_Bollywood_Song_Aryan_Khan_Shahrukh_Khan_Rasha_Thadani_Bobby_Deol_Web_Series_2025.wav",
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\DesiHipHop_-_Trapt_Saheer_Feat_MalikxOmar_Music_Video_Desi_Hip_Hop_2017.wav",
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\Irshad_Khan_-_Haryana_Hood_Official_Video_Irshad_Khan_Desi_Balak_Gama_Ke_New_Haryanvi_Songs_Haryanavi_2023.wav",
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\J_Singh_-_J_Singh_Dard_Rap_Song_Cnu_Hyderabad_Rapper_Desi_Hip_Hop.wav",
+      "Haryanvi\\India\\Haryanvi\\Irshad_Khan_-_Haryana_Hood_Official_Video_Irshad_Khan_Desi_Balak_Gama_Ke_New_Haryanvi_Songs_Haryanavi_2023.wav",
+      "K-Pop\\Global\\K-Pop\\Kluz_Cartoon_-_Your_Idol_Not_Official_Song_Clip_KPop_Demon_Hunters_huntrix_version.wav",
+      "K-Pop\\Global\\K-Pop\\SilentHum_-_Saja_Boys_Golden_Kpop_Demon_Hunters_Fan_Animation.wav"
+    ],
+    [
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\Gurinder_Gill_-_Brown_Munde.wav",
+      "Punjabi_Pop\\India\\Punjabi_Pop\\Gurinder_Gill_-_Brown_Munde.wav"
+    ],
+    [
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\indi_aura_-_Punjabi_Song_2025_Midnight_Urban_Desi_Flow.wav",
+      "Punjabi_Pop\\India\\Punjabi_Pop\\indi_aura_-_Punjabi_Song_2025_Midnight_Urban_Desi_Flow.wav"
+    ],
+    [
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\Karan_Aujla_-_On_Top.wav",
+      "Punjabi_Pop\\India\\Punjabi_Pop\\Karan_Aujla_-_On_Top.wav"
+    ],
+    [
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\Shubh_-_Cheques_Music_Video.wav",
+      "Punjabi_Pop\\India\\Punjabi_Pop\\Shubh_-_Cheques_Music_Video.wav"
+    ],
+    [
+      "Haryanvi\\India\\Haryanvi\\Raj_Mawar_-_Uncha_Nicha_Rasta_New_Haryanvi_DJ_Viral_Song_2025_Raj_Mawar_Komal_C_Bharti_Choudhary_Dance_feat_Bharti_Choudhary.wav",
+      "Haryanvi\\India\\Haryanvi\\SF_Music_-_Uncha_Nicha_Rasta_New_Haryanvi_DJ_Viral_Song_2025_Raj_Mawar_Komal_C_Bharti_Choudhary_Dance.wav"
+    ],
+    [
+      "Haryanvi\\India\\Haryanvi\\Sargam_Digital_-_Aalu_Matar_Official_Music_Video_Diler_Kharkiya_Anjali_Raghav_New_Haryanvi_Song_2025.wav",
+      "Haryanvi\\India\\Haryanvi\\VJ_Tunes_Music_-_Aalu_Matar_Official_Music_Video_Diler_Kharkiya_Anjali_Raghav_New_Haryanvi_Song_2025.wav"
+    ],
+    [
+      "I-Pop\\India\\I-Pop\\HUNTRX_-_Golden.wav",
+      "K-Pop\\Global\\K-Pop\\HUNTRX_-_Golden.wav"
+    ],
+    [
+      "I-Pop\\India\\I-Pop\\KinoCheck_Family_-_Takedown_Song_K_POP_DEMON_HUNTERS_Clip_2025.wav",
+      "K-Pop\\Global\\K-Pop\\Clip_-_Takedown_Song_K_POP_DEMON_HUNTERS_Clip_2025.wav"
+    ],
+    [
+      "I-Pop\\India\\I-Pop\\MilkyyMelodies_-_Soda_Pop_Saja_Girls_Version.wav",
+      "K-Pop\\Global\\K-Pop\\MilkyyMelodies_-_Soda_Pop_Saja_Girls_Version.wav"
+    ],
+    [
+      "K-Pop\\Global\\K-Pop\\Animation_Society_-_Huntrixs_What_It_Sounds_Like_Song_K_Pop_Demon_Hunters_Clip_2025.wav",
+      "K-Pop\\Global\\K-Pop\\Entertainment_Access_-_Huntrix_vs_Saja_Boys_What_It_Sounds_Like_Song_K_POP_DEMON_HUNTERS_Movie_Clip_2025.wav"
+    ],
+    [
+      "K-Pop\\Global\\K-Pop\\linlysun_-_Kpop_Dance_Playlist_To_Hype_You_Up_1h_Of_Kpop_Boy_Group_And_Girl_Group_Songs.wav",
+      "K-Pop\\Global\\K-Pop\\linlysun_-_Kpop_Hit_Playlist_To_Make_You_Dance_1h_Of_Kpop_Boy_Group_And_Girl_Group_Songs_From_2020_2025.wav"
+    ]
+  ]
+}

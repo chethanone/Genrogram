@@ -1,0 +1,115 @@
+{
+  "total_files": 1164,
+  "valid_files": 1157,
+  "invalid_files": 7,
+  "class_counts": {
+    "Amapiano": 115,
+    "Bollywood": 131,
+    "Desi_Hip-Hop": 112,
+    "Haryanvi": 125,
+    "Hyperpop": 141,
+    "I-Pop": 102,
+    "K-Pop": 133,
+    "Phonk": 109,
+    "Punjabi_Pop": 111,
+    "Techno": 78
+  },
+  "extension_counts": {
+    ".wav": 1157
+  },
+  "sample_rate_counts": {
+    "44100": 1157
+  },
+  "channel_counts": {
+    "1": 1157
+  },
+  "duration_statistics_seconds": {
+    "min_seconds": 0.07705215419501134,
+    "p25_seconds": 30.0,
+    "median_seconds": 30.0,
+    "mean_seconds": 29.60058778567607,
+    "p75_seconds": 30.0,
+    "max_seconds": 30.0
+  },
+  "short_files_under_2_seconds": {
+    "count": 5,
+    "files": [
+      "Bollywood\\India\\Bollywood\\ADV_Creations_-_2010_2019_Bollywood_Party_Hits_Evolution_Of_2010s_Era_Party_Songs.wav",
+      "Bollywood\\India\\Bollywood\\MLOBD_-_Udit_Narayan_Top_10_Super_hit_Songs_Most_Popular.wav",
+      "Bollywood\\India\\Bollywood\\SangeetVerse_-_These_Bollywood_Songs_Instant_Dance_Mode.wav",
+      "I-Pop\\India\\I-Pop\\WiSH_Updates_-_Real_talent_of_girlgroups_wish_katseye_ipop_girlgroup.wav",
+      "K-Pop\\Global\\K-Pop\\Married_to_the_Music_-_Top_10_K_pop_Songs_of_2025_JanMar.wav"
+    ]
+  },
+  "long_files_over_10_minutes": {
+    "count": 0,
+    "files": []
+  },
+  "silent_files_rms_le_minus_80_db": {
+    "count": 1,
+    "files": [
+      "Phonk\\Global\\Phonk\\VIBMUSIC_-_TOP_10_MOST_VIRAL_PHONKFUNK_2025.wav"
+    ]
+  },
+  "low_energy_files_rms_le_minus_45_db": {
+    "count": 1,
+    "files": [
+      "Phonk\\Global\\Phonk\\VIBMUSIC_-_TOP_10_MOST_VIRAL_PHONKFUNK_2025.wav"
+    ]
+  },
+  "duplicate_clusters": [
+    [
+      "Bollywood\\India\\Bollywood\\Bollywood_Hits_-_Non_Stop_Bollywood_Party_Songs_Video_Jukebox_Dance_Songs_Party_Songs_Hindi_Party_On_My_Mind.wav",
+      "Bollywood\\India\\Bollywood\\Hits_Of_Anu_Malik_-_Bollywood_Party_Mix_2024_Dance_Songs_Party_Songs_Hindi_New_Year_Party_Songs_Video_Jukebox.wav"
+    ],
+    [
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\Gurinder_Gill_-_Brown_Munde.wav",
+      "Punjabi_Pop\\India\\Punjabi_Pop\\Gurinder_Gill_-_Brown_Munde.wav"
+    ],
+    [
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\indi_aura_-_Punjabi_Song_2025_Midnight_Urban_Desi_Flow.wav",
+      "Punjabi_Pop\\India\\Punjabi_Pop\\indi_aura_-_Punjabi_Song_2025_Midnight_Urban_Desi_Flow.wav"
+    ],
+    [
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\Karan_Aujla_-_On_Top.wav",
+      "Punjabi_Pop\\India\\Punjabi_Pop\\Karan_Aujla_-_On_Top.wav"
+    ],
+    [
+      "Desi_Hip-Hop\\India\\Desi_Hip-Hop\\Shubh_-_Cheques_Music_Video.wav",
+      "Punjabi_Pop\\India\\Punjabi_Pop\\Shubh_-_Cheques_Music_Video.wav"
+    ],
+    [
+      "Haryanvi\\India\\Haryanvi\\Raj_Mawar_-_Uncha_Nicha_Rasta_New_Haryanvi_DJ_Viral_Song_2025_Raj_Mawar_Komal_C_Bharti_Choudhary_Dance_feat_Bharti_Choudhary.wav",
+      "Haryanvi\\India\\Haryanvi\\SF_Music_-_Uncha_Nicha_Rasta_New_Haryanvi_DJ_Viral_Song_2025_Raj_Mawar_Komal_C_Bharti_Choudhary_Dance.wav"
+    ],
+    [
+      "Haryanvi\\India\\Haryanvi\\Sargam_Digital_-_Aalu_Matar_Official_Music_Video_Diler_Kharkiya_Anjali_Raghav_New_Haryanvi_Song_2025.wav",
+      "Haryanvi\\India\\Haryanvi\\VJ_Tunes_Music_-_Aalu_Matar_Official_Music_Video_Diler_Kharkiya_Anjali_Raghav_New_Haryanvi_Song_2025.wav"
+    ],
+    [
+      "I-Pop\\India\\I-Pop\\HUNTRX_-_Golden.wav",
+      "K-Pop\\Global\\K-Pop\\HUNTRX_-_Golden.wav"
+    ],
+    [
+      "I-Pop\\India\\I-Pop\\KinoCheck_Family_-_Takedown_Song_K_POP_DEMON_HUNTERS_Clip_2025.wav",
+      "K-Pop\\Global\\K-Pop\\Clip_-_Takedown_Song_K_POP_DEMON_HUNTERS_Clip_2025.wav"
+    ],
+    [
+      "I-Pop\\India\\I-Pop\\MilkyyMelodies_-_Soda_Pop_Saja_Girls_Version.wav",
+      "K-Pop\\Global\\K-Pop\\MilkyyMelodies_-_Soda_Pop_Saja_Girls_Version.wav"
+    ],
+    [
+      "K-Pop\\Global\\K-Pop\\Animation_Society_-_Huntrixs_What_It_Sounds_Like_Song_K_Pop_Demon_Hunters_Clip_2025.wav",
+      "K-Pop\\Global\\K-Pop\\Entertainment_Access_-_Huntrix_vs_Saja_Boys_What_It_Sounds_Like_Song_K_POP_DEMON_HUNTERS_Movie_Clip_2025.wav"
+    ],
+    [
+      "K-Pop\\Global\\K-Pop\\linlysun_-_Kpop_Dance_Playlist_To_Hype_You_Up_1h_Of_Kpop_Boy_Group_And_Girl_Group_Songs.wav",
+      "K-Pop\\Global\\K-Pop\\linlysun_-_Kpop_Hit_Playlist_To_Make_You_Dance_1h_Of_Kpop_Boy_Group_And_Girl_Group_Songs_From_2020_2025.wav"
+    ]
+  ],
+  "unique_sha256_hashes": 1145,
+  "audit_outputs": {
+    "inventory_csv": "C:\\Genrogram\\audit_outputs\\expansion\\audio_inventory.csv",
+    "summary_json": "C:\\Genrogram\\audit_outputs\\expansion\\audio_audit_summary.json"
+  }
+}

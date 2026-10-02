@@ -1,0 +1,27 @@
+{
+  "dataset_name": "GTZAN",
+  "genre_base_path": "data\\gtzan\\genres",
+  "total_files_scanned": 1000,
+  "ignored_mac_resource_fork_files": 1000,
+  "valid_tracks": 999,
+  "corrupt_tracks": 1,
+  "corrupt_track_details": [
+    "genres\\jazz\\jazz.00054.wav"
+  ],
+  "total_duration_seconds": 29994.05,
+  "total_duration_hours": 8.33,
+  "duplicate_filenames_count": 0,
+  "genre_counts": {
+    "blues": 100,
+    "classical": 100,
+    "country": 100,
+    "disco": 100,
+    "hiphop": 100,
+    "jazz": 99,
+    "metal": 100,
+    "pop": 100,
+    "reggae": 100,
+    "rock": 100
+  },
+  "is_class_balanced": false
+}

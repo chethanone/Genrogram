@@ -1,0 +1,60 @@
+{
+  "project": "GENGROGRAM",
+  "model_name": "CustomCNN",
+  "model_version": "20-class-production-v1",
+  "architecture": "CustomCNN",
+  "parameters": 393940,
+  "num_classes": 20,
+  "class_names": [
+    "Blues",
+    "Classical",
+    "Country",
+    "Disco",
+    "Hip-Hop",
+    "Jazz",
+    "Metal",
+    "Pop",
+    "Reggae",
+    "Rock",
+    "Amapiano",
+    "Hyperpop",
+    "K-Pop",
+    "Phonk",
+    "Techno",
+    "Bollywood",
+    "Desi Hip-Hop",
+    "Haryanvi",
+    "I-Pop",
+    "Punjabi Pop"
+  ],
+  "sample_rate": 22050,
+  "segment_seconds": 3.0,
+  "segment_samples": 66150,
+  "n_mels": 128,
+  "n_fft": 2048,
+  "hop_length": 512,
+  "spectrogram": "log-mel",
+  "db_reference": "max",
+  "normalization": "per-segment-min-max",
+  "training_augmentation": {
+    "frequency_mask_probability": 0.35,
+    "frequency_mask_width": [
+      2,
+      12
+    ],
+    "time_mask_probability": 0.35,
+    "time_mask_width": [
+      2,
+      12
+    ],
+    "gaussian_noise_probability": 0.25,
+    "gaussian_noise_strength": [
+      0.005,
+      0.02
+    ]
+  },
+  "inference_augmentation": null,
+  "test_track_accuracy": 0.7554,
+  "test_track_macro_f1": 0.7558,
+  "production_checkpoint": "/content/drive/MyDrive/Genrogram/models/production/gengrogram_custom_cnn_20class_production.pt"
+}

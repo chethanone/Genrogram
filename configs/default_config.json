@@ -1,0 +1,65 @@
+{
+  "project_name": "GENROGRAM",
+  "academic_title": "Develop a Music Genre Classification System Using Spectrogram and CNN",
+  "dataset": {
+    "name": "GTZAN",
+    "url": "https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification",
+    "num_tracks": 1000,
+    "genres": [
+      "blues",
+      "classical",
+      "country",
+      "disco",
+      "hiphop",
+      "jazz",
+      "metal",
+      "pop",
+      "reggae",
+      "rock"
+    ],
+    "split": {
+      "train": 0.70,
+      "val": 0.15,
+      "test": 0.15,
+      "seed": 42,
+      "split_level": "original_track"
+    }
+  },
+  "audio": {
+    "sample_rate": 22050,
+    "n_mels": 128,
+    "n_fft": 2048,
+    "hop_length": 512,
+    "segment_duration": 3.0,
+    "mono": true,
+    "normalize": true,
+    "log_scale": true,
+    "f_min": 0.0,
+    "f_max": 11025.0
+  },
+  "model": {
+    "architecture": "CustomCNN",
+    "num_classes": 10,
+    "in_channels": 1,
+    "dropout": 0.3,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "epochs": 30,
+    "patience": 7,
+    "optimizer": "adam",
+    "seed": 42
+  },
+  "visual_theme": {
+    "background": "#F4F1EE",
+    "primary_text": "#161616",
+    "secondary_text": "#77716E",
+    "surface": "#FFFFFF",
+    "dark_surface": "#171717",
+    "primary_accent": "#C96F70",
+    "fonts": {
+      "heading": "Space Grotesk",
+      "mono": "DM Mono"
+    }
+  }
+}

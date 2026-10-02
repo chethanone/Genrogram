@@ -1,0 +1,44 @@
+{
+  "model_name": "CustomCNN",
+  "num_classes": 20,
+  "classes": [
+    "blues",
+    "classical",
+    "country",
+    "disco",
+    "hiphop",
+    "jazz",
+    "metal",
+    "pop",
+    "reggae",
+    "rock",
+    "amapiano",
+    "hyperpop",
+    "kpop",
+    "phonk",
+    "techno",
+    "bollywood",
+    "desi_hiphop",
+    "haryanvi",
+    "indian_pop",
+    "punjabi_pop"
+  ],
+  "sources": {
+    "gtzan": "existing local audited corpus",
+    "navrasa": "beastLucifer/navrasa-5000-dataset"
+  },
+  "audio": {
+    "sample_rate": 22050,
+    "segment_duration": 3.0,
+    "n_mels": 128,
+    "n_fft": 2048,
+    "hop_length": 512
+  },
+  "split": {
+    "train": 0.70,
+    "validation": 0.15,
+    "test": 0.15,
+    "seed": 42,
+    "group_level": "track_or_recording"
+  }
+}
