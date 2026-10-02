@@ -202,8 +202,6 @@ The production backend runs the trained CustomCNN checkpoint directly for infere
 
 ```text
 Genrogram/
-├── api/
-│   └── index.py                  # Vercel FastAPI entrypoint
 ├── backend/
 │   ├── main.py                   # FastAPI application
 │   ├── model_service.py          # Production model inference
@@ -251,7 +249,7 @@ http://localhost:3000
 Set the backend URL through:
 
 ```text
-NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000/api
 ```
 
 ### Backend
@@ -296,24 +294,14 @@ The production backend exposes:
 
 ## Deployment
 
-GENROGRAM is structured for deployment as two Vercel projects:
+GENROGRAM is configured for a **single Vercel project using Vercel Services**:
 
-1. **Frontend** — Next.js project using the `frontend/` directory.
-2. **Backend** — FastAPI/Python project using the repository root and `api/index.py` as the Vercel entrypoint.
+1. **Frontend service** — Next.js using `frontend/`.
+2. **Backend service** — FastAPI using `backend.main:app`.
 
-### Frontend environment variable
+The deployment exposes the FastAPI service under the same origin at `/api`, while all other routes are handled by the Next.js frontend. Vercel's generated `NEXT_PUBLIC_BACKEND_URL` is used by the browser so preview and production deployments keep the frontend and backend synchronized.
 
-```text
-NEXT_PUBLIC_API_URL=https://<backend-domain>
-```
-
-### Backend environment variable
-
-```text
-FRONTEND_ORIGIN=https://<frontend-domain>
-```
-
-The production model and its configuration are included through the Vercel function configuration.
+The production model, ML modules, configuration, evaluation JSON, and confusion matrix are included in the backend service bundle.
 
 The current client-side upload limit is 4 MB to remain within the deployment request-size constraint.
 
