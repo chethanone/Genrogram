@@ -132,7 +132,7 @@ export default function Home() {
           >
             <div className="absolute -right-3 -top-3 h-20 w-20 rounded-full border border-[#C96F70]/30" />
 
-            <div className="relative rounded-3xl border border-black/10 bg-white p-5 shadow-[0_20px_60px_rgba(22,22,22,0.08)]">
+            <div className="relative h-[600px] rounded-3xl border border-black/10 bg-white p-5 shadow-[0_20px_60px_rgba(22,22,22,0.08)]">
               <div
                 onDragOver={(event) => {
                   event.preventDefault();
@@ -141,7 +141,7 @@ export default function Home() {
                 onDragLeave={() => setIsDragging(false)}
                 onDrop={handleDrop}
                 onClick={() => inputRef.current?.click()}
-                className={`flex min-h-[310px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 text-center transition ${isDragging
+                className={`flex h-[300px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 text-center transition ${isDragging
                   ? "border-[#C96F70] bg-[#C96F70]/5"
                   : "border-black/10 hover:border-[#C96F70]/50 hover:bg-[#F4F1EE]/50"
                   }`}
@@ -172,7 +172,7 @@ export default function Home() {
               </div>
 
               {file && (
-                <div className="mt-4 rounded-2xl bg-[#F4F1EE] p-4">
+                <div className="mt-4 h-[250px] rounded-2xl bg-[#F4F1EE] p-4">
                   <div className="flex items-center gap-3">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#C96F70] text-white">
                       <Music2 size={18} />
