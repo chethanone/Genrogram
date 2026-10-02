@@ -83,7 +83,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F4F1EE] text-[#161616]">
+    <main className="min-h-screen overflow-x-hidden bg-[#F4F1EE] text-[#161616]">
       {/* Header */}
       <Navbar />
 
