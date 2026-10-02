@@ -1,22 +1,42 @@
 import os
+import sys
 
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 
-try:
-    from backend.main import app
-except Exception as exc:
-    # Temporary diagnostic fallback: if the backend fails during module import,
-    # keep the Vercel function alive long enough to expose the startup error.
-    error_text = f"{type(exc).__name__}: {exc}"
-    app = FastAPI()
+app = FastAPI()
+_backend_app = None
+_startup_error = None
 
-    @app.get("/health")
-    def startup_health():
-        return {
-            "status": "startup_error",
-            "error": error_text,
-            "python_version": os.sys.version,
-        }
+@app.on_event("startup")
+async def load_backend():
+    global _backend_app, _startup_error
+    try:
+        from backend.main import app as backend_app
+        _backend_app = backend_app
+    except Exception as exc:
+        _startup_error = f"{type(exc).__name__}: {exc}"
 
-# Vercel Python runtime entrypoint.
-# FastAPI is exposed as the ASGI application used by the function.
+@app.get("/health")
+def health():
+    if _startup_error:
+        return JSONResponse(
+            status_code=500,
+            content={
+                "status": "startup_error",
+                "error": _startup_error,
+                "python_version": sys.version,
+            },
+        )
+    if _backend_app is None:
+        return JSONResponse(status_code=503, content={"status": "backend_not_loaded"})
+    return {"status": "ok"}
+
+@app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
+async def fallback(path: str):
+    if _startup_error:
+        return JSONResponse(
+            status_code=500,
+            content={"status": "startup_error", "error": _startup_error},
+        )
+    return JSONResponse(status_code=503, content={"status": "backend_not_loaded"})
