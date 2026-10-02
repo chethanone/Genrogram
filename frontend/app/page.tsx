@@ -172,7 +172,7 @@ export default function Home() {
               </div>
 
               {file && (
-                <div className="mt-4 h-[250px] rounded-2xl bg-[#F4F1EE] p-4">
+                <div className="mt-4 h-[240px] rounded-2xl bg-[#F4F1EE] p-4">
                   <div className="flex items-center gap-3">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#C96F70] text-white">
                       <Music2 size={18} />
