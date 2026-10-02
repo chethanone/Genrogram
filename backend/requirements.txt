@@ -1,5 +1,9 @@
 # GENROGRAM production backend dependencies
-torch>=2.0.0
+#
+# Vercel runs CPU-only inference. Use the official PyTorch CPU wheel
+# to avoid pulling CUDA/ROCm libraries into the serverless bundle.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.6.0+cpu
 librosa>=0.10.0
 soundfile>=0.12.1
 numpy>=1.24.0,<2.0.0
