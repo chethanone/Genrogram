@@ -2,9 +2,17 @@
 
 > **Academic Project:** Develop a Music Genre Classification System Using Spectrogram and CNN
 
-GENROGRAM is a full-stack music genre classification application that converts uploaded audio into log-Mel spectrograms and classifies the track with a PyTorch Custom Convolutional Neural Network (CustomCNN).
+GENROGRAM is a full-stack music genre classification application that converts uploaded audio into log-Mel spectrograms and classifies the track with a PyTorch Custom Convolutional Neural Network (CustomCNN). The completed system is deployed as a single Vercel application with a Next.js frontend and FastAPI inference backend.
 
 The current production system supports **20 music genres**, provides track-level predictions and confidence scores, generates spectrogram visualizations, and provides Grad-CAM explainability for the model's prediction.
+
+---
+
+## Live Demo
+
+**Production:** https://genrogram.vercel.app
+
+GENROGRAM is deployed as a production Vercel Services application. The frontend and FastAPI backend are served from the same production origin, with backend API routes available under `/api`.
 
 ---
 
@@ -299,7 +307,7 @@ GENROGRAM is configured for a **single Vercel project using Vercel Services**:
 1. **Frontend service** — Next.js using `frontend/`.
 2. **Backend service** — FastAPI using `backend.main:app`.
 
-The deployment exposes the FastAPI service under the same origin at `/api`, while all other routes are handled by the Next.js frontend. Vercel's generated `NEXT_PUBLIC_BACKEND_URL` is used by the browser so preview and production deployments keep the frontend and backend synchronized.
+The deployment exposes the FastAPI service under the same origin at `/api`, while all other routes are handled by the Next.js frontend. This keeps the production frontend and backend on the same origin and avoids a separate public backend URL.
 
 The production model, ML modules, configuration, evaluation JSON, and confusion matrix are included in the backend service bundle.
 
@@ -327,6 +335,8 @@ The production configuration records the model version, class mapping, preproces
 
 ## Project Status
 
+**Status: Complete — production system deployed.**
+
 GENROGRAM currently has:
 
 - A trained 20-class production CustomCNN
@@ -338,7 +348,7 @@ GENROGRAM currently has:
 - Production evaluation metrics
 - Vercel deployment configuration
 
-The project is ready for deployment and final live-system validation.
+The project is complete and deployed as a live production system. The current release includes the frozen 20-class model, inference backend, responsive interface, explainability, evaluation views, local history, and production deployment configuration.
 
 ---
 
